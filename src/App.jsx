@@ -2,6 +2,8 @@ import { useLayoutEffect, useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import './App.css'
 import { motion } from "motion/react"
+import ParticleBlob from '../src/components/ParticlesBlob'
+import AboutMe from './sections/AboutMe'
 
 function App() {
   const comp = useRef(null)
@@ -56,6 +58,10 @@ function App() {
           opacity: 0,
           duration: 0.5,
         })
+        .from("#particles", {
+          opacity: 0,
+          duration: 0.5,
+        })
     }, comp)
 
     return () => ctx.revert()
@@ -80,56 +86,67 @@ function App() {
   const textLeave = () => setCursorVariant("default")
 
   return (
-    <div className="relative" ref={comp}>
-      <motion.div
-        className='cursor'
-        variants={variants}
-        animate={cursorVariant}
-      />
-      <div
-        id="intro-slider"
-        className="h-screen bg-gray-50 absolute w-full flex justify-center items-center tracking-tight"
-      >
-        <h1 className="p-10 text-3xl" id="title-1">Web Developer</h1>
-        <h1 className="p-10 text-3xl" id="title-2">Web Designer</h1>
-        <h1 className="p-10 text-3xl" id="title-3">Graphic Designer</h1>
-      </div>
+    <div className='bg-gray-50'>
+      <div className="relative" ref={comp}>
+        <motion.div
+          className='cursor'
+          variants={variants}
+          animate={cursorVariant}
+        />
+        <div
+          id="intro-slider"
+          className="h-screen bg-gray-50 absolute w-full flex justify-center items-center tracking-tight"
+        >
+          <h1 className="p-10 text-3xl" id="title-1">Web Developer</h1>
+          <h1 className="p-10 text-3xl" id="title-2">Web Designer</h1>
+          <h1 className="p-10 text-3xl" id="title-3">Graphic Designer</h1>
+        </div>
 
-      <div className="h-screen bg-gray-950 flex justify-center items-center">
-        <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} id="welcome" className="text-9xl font-bold text-gray-100">
-          Welcome.
-        </h1>
-        <div className='fixed text-gray-100 bottom-0 right-0'>
-          <div
-            id="scroll"
-            className="flex flex-col items-center gap-2 p-5 text-xs"
-          >
-            <span className="leading-none">S</span>
-            <span className="leading-none">C</span>
-            <span className="leading-none">R</span>
-            <span className="leading-none">O</span>
-            <span className="leading-none">L</span>
+        <div className="h-screen bg-gray-950 flex items-center">
+          <div onMouseEnter={textEnter} onMouseLeave={textLeave} id="welcome" className="left text-8xl flex flex-col gap-8 p-10 font-bold text-gray-100">
+            <span>MD ZILLUR</span>
+            <span>RAHMAN</span>
+          </div>
+          <div className='right' id="particles">
+            <div className='blob-wrapper'>
+              <ParticleBlob></ParticleBlob>
+            </div>
+          </div>
+          <div className='fixed text-gray-100 bottom-0 right-0'>
+            <div
+              id="scroll"
+              className="flex flex-col items-center gap-2 p-5 text-xs"
+            >
+              <span className="leading-none">S</span>
+              <span className="leading-none">C</span>
+              <span className="leading-none">R</span>
+              <span className="leading-none">O</span>
+              <span className="leading-none">L</span>
 
-            <span className="flex justify-center items-center w-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"
-                />
-              </svg>
-            </span>
+              <span className="flex justify-center items-center w-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      <section>
+        <AboutMe></AboutMe>
+      </section>
     </div>
   )
 }

@@ -23,3 +23,17 @@
                0px 0px 1px white,
                0px 0px 1px white;
 } */
+
+.right {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blob-wrapper{
+    width: 420px;
+  height: 420px;
+  border-radius: 50%;
+}
